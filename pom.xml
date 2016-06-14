@@ -5,7 +5,7 @@
 	<groupId>com.tomhat</groupId>
 	<artifactId>SSLHttpClient</artifactId>
 	<version>1.0</version>
-	<packaging>jar</packaging>
+	<packaging>war</packaging>
 	<name>SSLHttpClient</name>
 	<url>http://maven.apache.org</url>
 
@@ -29,10 +29,24 @@
 		<artifactId>commons-io</artifactId>
 		<version>2.4</version>
 	  </dependency>
+	  
+	  <dependency>
+		  <groupId>javax.servlet</groupId>
+		  <artifactId>javax.servlet-api</artifactId>
+		  <version>3.1.0</version>
+	  </dependency>
+	  <dependency>
+		  <groupId>dom4j</groupId>
+		  <artifactId>dom4j</artifactId>
+		  <version>1.6.1</version>
+	  </dependency>
 	</dependencies>
 
 	<build>
-		<finalName>openstack4j-api</finalName>
+		<finalName>SSLHttpServer</finalName>
+		<outputDirectory>
+            ${basedir}/src/main/webapp/WEB-INF/classes
+        </outputDirectory>
 		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
@@ -42,11 +56,14 @@
 					<source>1.6</source>
 					<target>1.6</target>
 					<encoding>UTF-8</encoding>
+					<compilerArguments>
+						<extdirs>src\main\webapp\WEB-INF\lib</extdirs>
+					</compilerArguments>
 				</configuration>
 			</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-jar-plugin</artifactId>
+				<artifactId>maven-war-plugin</artifactId>
 				<version>2.5</version>
 			</plugin>
 			<plugin>
